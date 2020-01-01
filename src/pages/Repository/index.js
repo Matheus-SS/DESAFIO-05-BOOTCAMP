@@ -102,12 +102,9 @@ export default class Repository extends React.Component {
   handlePrev = () => {
     const { page, filterIndex } = this.state;
     if (page !== 1) {
-      this.setState(
-        {
-          page: page - 1,
-        },
-        () => this.handleFilter(filterIndex)
-      );
+      this.setState({
+        page: page - 1,
+      });
     }
   };
 
