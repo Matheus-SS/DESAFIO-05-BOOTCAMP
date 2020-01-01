@@ -94,24 +94,21 @@ export default class Repository extends React.Component {
     }));
   };
 
-  handleNext = async () => {
-    // se tirar o await não funciona
+  handleNext = () => {
     const { page, filterIndex } = this.state;
-    await this.setState({
-      page: page + 1,
-    });
-    this.handleFilter(filterIndex);
+    this.setState({ page: page + 1 }, () => this.handleFilter(filterIndex));
   };
 
-  handlePrev = async () => {
-    // se tirar o await não funciona
+  handlePrev = () => {
     const { page, filterIndex } = this.state;
     if (page !== 1) {
-      await this.setState({
-        page: page - 1,
-      });
+      this.setState(
+        {
+          page: page - 1,
+        },
+        () => this.handleFilter(filterIndex)
+      );
     }
-    this.handleFilter(filterIndex);
   };
 
   render() {
